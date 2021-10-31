@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 19px;
+    font-size: 12px;
     line-height: 2em;
     overflow-x: hidden;
 }
@@ -65,13 +65,13 @@ hr {
 
 .tm-main {
     margin-left: 400px;
-    padding: 80px 100px 25px;
+    padding: 50px 50px 25px;
 }
 
-.tm-post { max-width: 470px; }
+.tm-post { max-width: 920px; }
 
 .tm-row {
-    max-width: 980px;
+    max-width: 920px;
     justify-content: space-between;
 }
 
@@ -90,7 +90,7 @@ hr {
     max-width: 300px;    
     display: flex;
     align-items: center;
-    font-size: 1.4rem;
+    font-size: 1.4em;
     padding: 30px;
 }
 
@@ -132,7 +132,7 @@ ul {
 .tm-social-link {
     display: inline-block;
     background-color: white;    
-    font-size: 1.4rem;
+    font-size: 1.4em;
     width: 50px;
     height: 50px;
     text-align: center;
@@ -165,7 +165,7 @@ ul {
     margin-right: 30px;
     border-radius: 0;
     border-color: #0CC;
-    font-size: 1.2rem;
+    font-size: 1.2em;
 }
 
 .tm-search-button {
@@ -180,7 +180,7 @@ ul {
 
 .tm-search-icon {
     color: white;
-    font-size: 1.3rem;
+    font-size: 1.3em;
 }
 
 .tm-post-link {
@@ -231,12 +231,12 @@ ul {
 }
 
 .tm-post-title {
-    font-size: 1.7rem;
+    font-size: 1.7em;
     transition: all 0.3s ease;
 }
 
 .tm-h3 {
-    font-size: 1.3rem;
+    font-size: 1.3em;
     color: #999;
 }
 
@@ -245,7 +245,7 @@ ul {
 .tm-btn {
     display: inline-block;
     border-radius: 5px;
-    font-size: 1.3rem;
+    font-size: 1.3em;
     transition: all 0.3s ease;
 }
 
@@ -351,10 +351,13 @@ figcaption { line-height: 1.4; }
     margin-right: 0;
 }
 
+.tm-pt-10 { padding-top: 10px; }
 .tm-pt-20 { padding-top: 20px; }
 .tm-pt-30 { padding-top: 30px; }
 .tm-pt-45 { padding-top: 45px; }
 .tm-pt-60 { padding-top: 60px; }
+.tm-mb-20 { margin-bottom: 20px; }
+.tm-mb-30 { margin-bottom: 30px; }
 .tm-mb-40 { margin-bottom: 40px; }
 .tm-mb-45 { margin-bottom: 45px; }
 .tm-mb-55 { margin-bottom: 55px; }
@@ -417,7 +420,7 @@ a:hover figcaption { color: #056767; }
     max-width: 360px;
 }
 
-.tm-contact-form label { font-size: 1.4rem; }
+.tm-contact-form label { font-size: 1.4em; }
 .tm-contact-form .form-group { display: flex; }
 
 @media (max-width: 1540px) {
