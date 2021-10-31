@@ -24,4 +24,5 @@ urlpatterns = [
     path('', views.home),
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('posts/<int:post_id>', views.post),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

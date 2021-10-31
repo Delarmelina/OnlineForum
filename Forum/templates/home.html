@@ -37,11 +37,11 @@
         {% for post in posts %}
             <article class="col-12 col-md-12 tm-post">
                 <hr class="tm-hr-primary">
-                <a href="post.html" class="effect-lily tm-post-link tm-pt-10">
+                <a href="/posts/{{ post.pk }}" class="effect-lily tm-post-link tm-pt-10">
                     <h2 class="tm-color-primary tm-post-title">{{ post.title }}</h2>
                 </a>                    
                 <p>
-                    {{ post.content }}
+                    {{ post.content|safe }}
                 </p>
                 <div class="d-flex justify-content-between">
                     <span class="tm-color-primary">{{post.keyWords}}</span>
@@ -49,7 +49,7 @@
                 </div>
                 <hr>
                 <div class="d-flex justify-content-between">
-                    <span>by {{ post.author }}</span>
+                    <span>by {{ post.author.get_full_name }}</span>
                     <span>Last Update: {{ post.update_at }}</span>
                 </div>
             </article>
