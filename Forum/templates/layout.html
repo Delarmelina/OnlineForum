@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Forum Autvix</title>
+    
+    {% load static %}
+
+    {% comment %} <link href="{% static 'Forum/all.min.css' %}" rel="stylesheet" type="text/css"> {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Forum/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'Forum/familySource.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'Forum/style.css' %}">
+</head>
+    
+<body>
+	<header class="tm-header" id="tm-header">
+        <div class="tm-header-wrapper">
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="tm-site-header">
+                <div class="mb-3 mx-auto tm-site-logo">
+                    {% comment %} <i class="fas fa-times fa-2x"></i> {% endcomment %}
+                    <img src="{% static 'Forum/logos/logo_autvix.png' %}" alt="LogoAutvix" class="img-fluid">
+                </div>            
+                <h1 class="text-center">Fórum Autvix</h1>
+            </div>
+            <nav class="tm-nav" id="tm-nav">            
+                {% block navbar %}{% endblock %}
+            </nav>
+            <p class="tm-mb-80 pr-5 text-white">
+                Autvix, onde a excelência é uma palavra cotidiana!
+            </p>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <main class="tm-main">
+            <!-- Search form -->
+            {% block content %}{% endblock %}
+
+            <footer class="row tm-row">
+                <hr class="col-12">
+                <div class="col-md-6 col-12 tm-color-gray">
+                    Design: <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-external-link">TemplateMo</a>
+                </div>
+                <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+                    Copyright 2020 Xtra Blog Company Co. Ltd.
+                </div>
+            </footer>
+        </main>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/templatemo-script.js"></script>
+</body>
+</html>

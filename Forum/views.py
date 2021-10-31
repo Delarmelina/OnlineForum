@@ -1,5 +1,8 @@
 from django.shortcuts import render
 
+from Forum.models import Post
+
 # Create your views here.
 def home(request):
-    return render(request, './Forum/index.html')
+    posts = Post.objects.all()
+    return render(request, './home.html', {'posts': posts})
