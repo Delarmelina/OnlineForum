@@ -26,4 +26,6 @@ urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('posts/<int:post_id>', views.post),
     path('newPost/', views.newPost, name='new-post'),
+    path('keyWords/', views.keyWords, name='key-words'),
+    path('search/<str:kw>', views.search, name='search'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

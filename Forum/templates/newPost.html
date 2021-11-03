@@ -9,34 +9,34 @@
             </a>
         </li>
         <li class="tm-nav-item active">
-            <a href="newPost/" class="tm-nav-link">
+            <a href="." class="tm-nav-link">
                 <i class="fas fa-pen"></i>
                 Escrever Post
             </a>
         </li>
         <li class="tm-nav-item">
-            <a href="about.html" class="tm-nav-link">
+            <a href="../keyWords/" class="tm-nav-link">
                 <i class="fas fa-users"></i>
               Palavras chaves
             </a>
         </li>
         <li class="tm-nav-item">
-            <a href="contact.html" class="tm-nav-link">
+            <a href="#" class="tm-nav-link">
                 <i class="far fa-comments"></i>
-                Meus posts
+                -
             </a>
         </li>
     </ul>
 {% endblock %}
 
 {% block content %}
-    <h1>Adicione um novo Post:</h1>
+    <h1 class="tm-color-pxrimary tm-post-title">Adicione um novo Post</h1>
     <hr class="col-12">
     <div class="row">
         <form method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Criar Post" class="btn btn-success">
+            {{  form.as_p }}
+            <input type="submit" value="Criar Post" class="mb-2 tm-btn tm-btn-primary">
         </form>
     </div> 
 {% endblock %}

@@ -423,6 +423,14 @@ a:hover figcaption { color: #056767; }
 .tm-contact-form label { font-size: 1.4em; }
 .tm-contact-form .form-group { display: flex; }
 
+.keywords {
+    display: inline-block;
+    flex-wrap:wrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5000px;
+}
+
 @media (max-width: 1540px) {
     .tm-header { width: 320px; }
 

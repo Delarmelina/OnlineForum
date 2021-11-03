@@ -1,12 +1,21 @@
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
 from .forms import PostForm
+from django.contrib.auth.models import User
 
 from Forum.models import Post
 
 # Create your views here.
 def home(request):
-    posts = Post.objects.all().order_by('-created_at')
-    return render(request, './home.html', {'posts': posts})
+    posts_list = Post.objects.all().order_by('-created_at')
+    
+    paginator = Paginator(posts_list, 2)
+
+    page = request.GET.get('page')
+
+    posts = paginator.get_page(page)
+
+    return render(request, './home.html', {'posts': posts, 'page': page})
 
 def post(request, post_id):
     post = Post.objects.get(pk=post_id)
@@ -18,9 +27,32 @@ def newPost(request):
 
         if form.is_valid():
             post = form.save(commit=False)
+            post.title = post.title.upper()
             post.author = request.user
+            post.keyWords = post.keyWords.lower()
             post.save()
             return redirect('/')
     else:
         form = PostForm()
         return render(request, './newPost.html', {'form': form})
+
+def keyWords(request):
+    posts = Post.objects.all()
+
+    keytemp = []
+    keys = []
+
+    for post in posts:
+        keytemp.append(post.keyWords.split(','))
+
+    for a in keytemp:
+        for b in a:
+            keys.append(b)
+    keys = sorted(set(keys))
+
+    return render(request, './keyWords.html', {'keys': keys})
+
+def search(request, kw):
+    posts = Post.objects.filter(keyWords__contains=kw)
+
+    return render(request, './search.html', {'posts': posts, 'kw': kw})

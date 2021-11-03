@@ -2,20 +2,20 @@
 
 {% block navbar %}
     <ul>
-        <li class="tm-nav-item active">
+        <li class="tm-nav-item">
             <a href="/" class="tm-nav-link">
                 <i class="fas fa-home"></i>
                 Home
             </a>
         </li>
         <li class="tm-nav-item">
-            <a href="newPost" class="tm-nav-link">
+            <a href="../newPost" class="tm-nav-link">
                 <i class="fas fa-pen"></i>
                 Escrever Post
             </a>
         </li>
         <li class="tm-nav-item">    
-            <a href="keyWords" class="tm-nav-link">
+            <a href="../keyWords" class="tm-nav-link">
                 <i class="fas fa-users"></i>
               Palavras chaves
             </a>
@@ -34,7 +34,7 @@
         <div class="col-12">
             <form method="GET" class="form-inline tm-mb-20 tm-search-form">                
                 <input class="form-control tm-search-input" name="query" type="text" placeholder="Search..." aria-label="Search">
-                <button class="tm-search-button" type="submit" >
+                <button class="tm-search-button" type="submit">
                     <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
                 </button>                                
             </form>
@@ -84,13 +84,10 @@
                         <a href="#" class="mb-2 tm-btn tm-paging-link">2</a>
                     </li>
                     <li class="tm-paging-item">
-                        <a href="?page=3" class="mb-2 tm-btn tm-paging-link">3</a>
+                        <a href="#" class="mb-2 tm-btn tm-paging-link">3</a>
                     </li>
                     <li class="tm-paging-item">
                         <a href="#" class="mb-2 tm-btn tm-paging-link">4</a>
-                    </li>
-                    <li class="tm-paging-item">
-                        <a href="#" class="mb-2 tm-btn tm-paging-link">{{ page }}</a>
                     </li>
                 </ul>
             </nav>
