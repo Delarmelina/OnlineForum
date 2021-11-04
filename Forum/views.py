@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from .forms import PostForm
@@ -7,11 +8,14 @@ from Forum.models import Post
 
 # Create your views here.
 def home(request):
-    page = request.GET.get('page')
 
     posts_list = Post.objects.all().order_by('-created_at')
-    paginator = Paginator(posts_list, 2)
-    posts = paginator.page(page)
+
+    paginator = Paginator(posts_list, 10)
+
+    page = request.GET.get('page')
+
+    posts = paginator.get_page(page)
 
     return render(request, './home.html', {'posts': posts})
 
@@ -51,6 +55,13 @@ def keyWords(request):
     return render(request, './keyWords.html', {'keys': keys})
 
 def search(request, kw):
+
+    kwCheck = request.GET.get('kwCheck')
+    titleCheck = request.GET.get('titleCheck')
+    AutorCheck = request.GET.get('AutorCheck')
+    ContCheck = request.GET.get('ContCheck')
+    query = request.GET.get('query')
+
     posts = Post.objects.filter(keyWords__contains=kw)
 
-    return render(request, './search.html', {'posts': posts, 'kw': kw})
+    return render(request, './search.html', {'posts': posts})

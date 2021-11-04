@@ -7,7 +7,8 @@
     
     {% load static %}
 
-    <link href="{% static 'Forum/all.min.css' %}" rel="stylesheet" type="text/css">
+    <!-- <link href="{% static 'Forum/all.min.css' %}" rel="stylesheet" type="text/css"> -->
+    <script src="{% static 'Forum/fontawesome_free/js/all.min.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'Forum/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'Forum/familySource.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'Forum/style.css' %}">
@@ -21,7 +22,6 @@
             </button>
             <div class="tm-site-header">
                 <div class="mb-3 mx-auto tm-site-logo">
-                    {% comment %} <i class="fas fa-times fa-2x"></i> {% endcomment %}
                     <img src="{% static 'Forum/logos/logo_autvix.png' %}" alt="LogoAutvix" class="img-fluid">
                 </div>            
                 <h1 class="text-center">Fórum Autvix</h1>

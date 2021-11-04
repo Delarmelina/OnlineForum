@@ -32,7 +32,16 @@
 {% block content %}
     <div class="row tm-row">
         <div class="col-12">
-            <form method="GET" class="form-inline tm-mb-20 tm-search-form">                
+            <form method="GET" class="form-inline tm-mb-20 tm-search-form">   
+                    <input type="checkbox" id="kwCheck" name="kwCheck" checked>
+                    <label for="kwCheck" class='tm-mr-20'>KeyWords</label>       
+                    <input type="checkbox" id="titleCheck" name="titleCheck" checked>
+                    <label for="titleCheck" class='tm-mr-20'>Title</label>       
+                    <input type="checkbox" id="AutorCheck" name="AutorCheck">
+                    <label for="AutorCheck" class='tm-mr-20'>Autor</label>       
+                    <input type="checkbox" id="ContCheck" name="ContCheck">
+                    <label for="ContCheck" class='tm-mr-20'>Conteúdo</label>       
+
                 <input class="form-control tm-search-input" name="query" type="text" placeholder="Search..." aria-label="Search">
                 <button class="tm-search-button" type="submit">
                     <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
@@ -48,30 +57,4 @@
             {% endfor %}
         </div>
     </div>
-
-    <div class="row tm-row tm-mt-100 tm-mb-75">
-        <div class="tm-prev-next-wrapper">
-            <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">Prev</a>
-            <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next">Next</a>
-        </div>
-        <div class="tm-paging-wrapper">
-            <span class="d-inline-block mr-3">Page</span>
-            <nav class="tm-paging-nav d-inline-block">
-                <ul>
-                    <li class="tm-paging-item active">
-                        <a href="#" class="mb-2 tm-btn tm-paging-link">1</a>
-                    </li>
-                    <li class="tm-paging-item">
-                        <a href="#" class="mb-2 tm-btn tm-paging-link">2</a>
-                    </li>
-                    <li class="tm-paging-item">
-                        <a href="#" class="mb-2 tm-btn tm-paging-link">3</a>
-                    </li>
-                    <li class="tm-paging-item">
-                        <a href="#" class="mb-2 tm-btn tm-paging-link">4</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>                
-    </div>   
 {% endblock %}
