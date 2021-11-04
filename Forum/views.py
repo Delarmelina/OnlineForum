@@ -7,15 +7,13 @@ from Forum.models import Post
 
 # Create your views here.
 def home(request):
-    posts_list = Post.objects.all().order_by('-created_at')
-    
-    paginator = Paginator(posts_list, 2)
-
     page = request.GET.get('page')
 
-    posts = paginator.get_page(page)
+    posts_list = Post.objects.all().order_by('-created_at')
+    paginator = Paginator(posts_list, 2)
+    posts = paginator.page(page)
 
-    return render(request, './home.html', {'posts': posts, 'page': page})
+    return render(request, './home.html', {'posts': posts})
 
 def post(request, post_id):
     post = Post.objects.get(pk=post_id)
