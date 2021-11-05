@@ -370,6 +370,15 @@ figcaption { line-height: 1.4; }
 .tm-mt-100 { margin-top: 100px; }
 .tm-mr-20 { margin-right: 20px; }
 .tm-mr-5 { margin-right: 5px; }
+.tm-ml-5 { margin-left: 4px; }
+
+/* Style radio search */
+.tm-radio-search {
+    background:#0CC;
+    padding:3px;
+    cursor:pointer;
+    color:white;
+}
 
 .tm-color-primary, span.tm-color-primary { color: #099; }
 a.tm-color-gray, .tm-color-gray { color: #999; }

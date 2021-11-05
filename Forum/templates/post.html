@@ -14,10 +14,6 @@
             <i class="fas fa-users"></i>
             Palavras chaves
         </a></li>
-        <li class="tm-nav-item"><a href="#" class="tm-nav-link">
-            <i class="far fa-comments"></i>
-            -
-        </a></li>
     </ul>
 {% endblock %}
 
@@ -37,7 +33,11 @@
                 </div>
                 <hr>
                 <div class="d-flex justify-content-between">
-                    <span>by {{ post.author.get_full_name }}</span>
+                    {% if post.author.get_full_name != "" %}
+                        <span class="tm-color-primary">By: {{ post.author.get_full_name }}</span>
+                    {% else %}
+                        <span class="tm-color-primary">By: {{ post.author.get_username }}</span>
+                    {% endif %}
                     <span>Last Update: {{ post.update_at }}</span>
                 </div>
             </article>

@@ -6,23 +6,29 @@ from django.contrib.auth.models import User
 
 from Forum.models import Post
 
-# Create your views here.
+# View para a página principal
 def home(request):
 
-    posts_list = Post.objects.all().order_by('-created_at')
+    posts = Post.objects.all().order_by('-created_at')
 
-    paginator = Paginator(posts_list, 10)
+    search_by = request.GET.get('type_search')
+    if search_by != None:
+        posts = searchFilter(request, posts, search_by)
+        return render(request, './search.html', {'posts': posts})
 
+    paginator = Paginator(posts, 5)
     page = request.GET.get('page')
 
-    posts = paginator.get_page(page)
+    posts = paginator.get_page(page)       
 
     return render(request, './home.html', {'posts': posts})
 
+# View para a página de detalhes de um post
 def post(request, post_id):
     post = Post.objects.get(pk=post_id)
     return render(request, './post.html', {'post': post})
 
+# View para a página de criação de posts
 def newPost(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
@@ -38,6 +44,7 @@ def newPost(request):
         form = PostForm()
         return render(request, './newPost.html', {'form': form})
 
+# View para a página das keywords
 def keyWords(request):
     posts = Post.objects.all()
 
@@ -52,21 +59,39 @@ def keyWords(request):
             keys.append(b)
     keys = sorted(set(keys))
 
+    search_by = request.GET.get('type_search')
+    if search_by != None:
+        posts = searchFilter(request, posts, search_by)
+        return render(request, './search.html', {'posts': posts})
+
     return render(request, './keyWords.html', {'keys': keys})
 
+# View para a página de busca
 def search(request, kw):
 
-    # 0 = KeyWords // 1 = Title // 2 = Author // 3 = Content 
+    posts = Post.objects.filter(keyWords__contains=kw)
 
     search_by = request.GET.get('type_search')
-
-    if search_by == '0':
-        posts = Post.objects.filter(keyWords__contains=kw)
-    elif search_by == '1':
-        posts = Post.objects.filter(title__contains=kw)
-    elif search_by == '2':
-        posts = Post.objects.filter(author__username__contains=kw)
-    elif search_by == '3':
-        posts = Post.objects.filter(content__contains=kw)
+    if search_by != None:
+        posts = searchFilter(request, posts, search_by)
 
     return render(request, './search.html', {'posts': posts})
+
+
+
+#-----------------------------------------------------------------------------------------------------------------------
+# Função da barra de pesquisa
+def searchFilter(request, posts, search_by):
+
+    search = request.GET.get('query')
+
+    if search_by == '0':
+        posts = Post.objects.filter(keyWords__contains=search)
+    elif search_by == '1':
+            posts = Post.objects.filter(title__contains=search)
+    elif search_by == '2':
+        posts = Post.objects.filter(author__username__contains=search)
+    elif search_by == '3':
+        posts = Post.objects.filter(content__contains=search)
+
+    return posts

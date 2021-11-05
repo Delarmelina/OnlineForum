@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from pathlib import Path
 from django.contrib import admin
 from django.urls import include, path
 
@@ -21,11 +22,17 @@ from django.conf import settings
 from Forum import views
 
 urlpatterns = [
+    # Principal pages
     path('', views.home),
-    path('admin/', admin.site.urls),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('posts/<int:post_id>', views.post),
     path('newPost/', views.newPost, name='new-post'),
     path('keyWords/', views.keyWords, name='key-words'),
     path('search/<str:kw>', views.search, name='search'),
+
+    # Auxiliary pages
+    path('admin/', admin.site.urls),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    
+    # Auth pages
+    path('accounts/', include('allauth.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

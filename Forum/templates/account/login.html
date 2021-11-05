@@ -1,3 +1,5 @@
+{% load crispy_forms_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,12 +28,6 @@
                 </div>            
                 <h1 class="text-center">Fórum Autvix</h1>
             </div>
-            <!-- Navegação principal -->
-            {% if user.is_authenticated %}
-                <nav class="tm-nav" id="tm-nav">            
-                    {% block navbar %}{% endblock %}
-                </nav>
-            {% else %}
                 <nav class="tm-nav" id="tm-nav">
                     <li class="tm-nav-item">
                         <a href="{% url 'account_login' %}" class="tm-nav-link">
@@ -39,43 +35,17 @@
                             Login
                         </a>
                     </li>
-                </nav> 
-            {% endif %}
-
-            <!-- Rodapé do menu lateral -->
-            {% if user.is_authenticated %}
-                <p class="tm-mb-80 pr-5 text-white">
-                    Autvix, onde a excelência é uma palavra cotidiana!
-                </p>
-                {{ user.get_full_name }}
-                
-                <nav class="tm-nav" id="tm-nav">
-                    <li class="tm-nav-item">
-                        <form method="post" action="{% url 'account_logout' %}">
-                            {% csrf_token %}
-                            <button class="btn" type="submit">
-                                <i class="fas fa-sign-out-alt"></i>
-                                Sair
-                        </form>
-                        <!-- <a href="{% url 'account_logout' %}" class="tm-nav-link">
-                            <i class="fas fa-home"></i>
-                            Logout
-                        </a> -->
-                    </li>
-                </nav> 
-            {% endif %}
-        </div>
+                </nav>
     </header>
     <div class="container-fluid">
         <main class="tm-main">
             <!-- Conteudo do site -->
-            {% if user.is_authenticated %}
-                {% block content %}{% endblock %}
-            {% else %}
-                <p class="tm-mb-80 pr-5 text-white">
-                    Por favor faça o Login
-                </p>
-            {% endif %}
+            <h2>Entrar</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-success">Entrar</button>
+            </form>
 
             <!-- Footer -->
             {% if user.is_authenticated %}

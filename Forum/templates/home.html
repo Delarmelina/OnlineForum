@@ -20,21 +20,24 @@
               Palavras chaves
             </a>
         </li>
-        <li class="tm-nav-item">
-            <a href="#" class="tm-nav-link">
-                <i class="far fa-comments"></i>
-                -
-            </a>
-        </li>
     </ul>
 {% endblock %}
 
 {% block content %}
     <div class="row tm-row">
         <div class="col-12">
-            <form method="GET" class="form-inline tm-mb-20 tm-search-form">                
+            <form method="GET" class="form-inline tm-mb-20 tm-search-form tm-radio-search">   
+                    <input type="radio" id="kwCheck" name="type_search" value="0" checked>
+                    <label for="kwCheck" class='tm-mr-20 tm-ml-5'>KeyWord</label><br>
+                    <input type="radio" id="titleCheck" name="type_search" value="1">
+                    <label for="titleCheck" class='tm-mr-20 tm-ml-5'>Título</label><br>
+                    <input type="radio" id="AutorCheck" name="type_search" value="2">
+                    <label for="AutorCheck" class='tm-mr-20 tm-ml-5'>Autor</label>
+                    <input type="radio" id="Content" name="type_search" value="3">
+                    <label for="Content" class='tm-mr-20 tm-ml-5'>Conteúdo</label>
+
                 <input class="form-control tm-search-input" name="query" type="text" placeholder="Search..." aria-label="Search">
-                <button class="tm-search-button" type="submit" >
+                <button class="tm-search-button" type="submit">
                     <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
                 </button>                                
             </form>
@@ -49,7 +52,7 @@
                     <h2 class="tm-color-primary tm-post-title">{{ post.title }}</h2>
                 </a>                    
                 <p>
-                    {{ post.content|safe }}
+                    {{ post.content|safe|truncatechars:350 }}
                 </p>
                 <div class="d-flex justify-content-between">
                     <span class="tm-color-primary">{{post.keyWords}}</span>
@@ -84,9 +87,9 @@
         <div class="tm-paging-wrapper">
             <nav class="tm-paging-nav d-inline-block">
                 <ul>
-                        <li class="tm-paging-item active">
-                            <a href="#" class="mb-2 tm-btn tm-paging-link">{{ posts.number }}</a>
-                        </li>
+                    <li class="tm-paging-item active">
+                        <a href="#" class="mb-2 tm-btn tm-paging-link">{{ posts.number }}</a>
+                    </li>
                 </ul>
             </nav>
         </div>                

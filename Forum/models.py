@@ -7,6 +7,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.PROTECT)
     keyWords = models.CharField(max_length=255)
+    whatsapp = models.BooleanField(default=False)
     content = RichTextUploadingField()
     created_at = models.DateField(auto_now_add=True)
     update_at = models.DateField(auto_now=True)
