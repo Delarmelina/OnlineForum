@@ -56,12 +56,17 @@ def keyWords(request):
 
 def search(request, kw):
 
-    kwCheck = request.GET.get('kwCheck')
-    titleCheck = request.GET.get('titleCheck')
-    AutorCheck = request.GET.get('AutorCheck')
-    ContCheck = request.GET.get('ContCheck')
-    query = request.GET.get('query')
+    # 0 = KeyWords // 1 = Title // 2 = Author // 3 = Content 
 
-    posts = Post.objects.filter(keyWords__contains=kw)
+    search_by = request.GET.get('type_search')
+
+    if search_by == '0':
+        posts = Post.objects.filter(keyWords__contains=kw)
+    elif search_by == '1':
+        posts = Post.objects.filter(title__contains=kw)
+    elif search_by == '2':
+        posts = Post.objects.filter(author__username__contains=kw)
+    elif search_by == '3':
+        posts = Post.objects.filter(content__contains=kw)
 
     return render(request, './search.html', {'posts': posts})

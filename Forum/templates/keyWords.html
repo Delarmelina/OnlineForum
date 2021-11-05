@@ -33,17 +33,17 @@
     <div class="row tm-row">
         <div class="col-12">
             <form method="GET" class="form-inline tm-mb-20 tm-search-form">   
-                    <input type="checkbox" id="kwCheck" name="kwCheck" checked>
-                    <label for="kwCheck" class='tm-mr-20'>KeyWords</label>       
-                    <input type="checkbox" id="titleCheck" name="titleCheck" checked>
-                    <label for="titleCheck" class='tm-mr-20'>Title</label>       
-                    <input type="checkbox" id="AutorCheck" name="AutorCheck">
-                    <label for="AutorCheck" class='tm-mr-20'>Autor</label>       
-                    <input type="checkbox" id="ContCheck" name="ContCheck">
-                    <label for="ContCheck" class='tm-mr-20'>Conteúdo</label>       
+                    <input type="radio" id="kwCheck" name="type_search" value="0">
+                    <label for="kwCheck" class='tm-mr-20'>KeyWord</label><br>
+                    <input type="radio" id="titleCheck" name="type_search" value="1">
+                    <label for="titleCheck" class='tm-mr-20'>Título</label><br>
+                    <input type="radio" id="AutorCheck" name="type_search" value="2">
+                    <label for="AutorCheck" class='tm-mr-20'>Autor</label>
+                    <input type="radio" id="Content" name="type_search" value="3">
+                    <label for="Content" class='tm-mr-20'>Conteúdo</label>
 
                 <input class="form-control tm-search-input" name="query" type="text" placeholder="Search..." aria-label="Search">
-                <button class="tm-search-button" type="submit">
+                <button class="tm-search-button" type="submit" href="../search/">
                     <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
                 </button>                                
             </form>
@@ -53,8 +53,10 @@
     <div class="row tm-row ">
         <div class="keyWords">
             {% for key in keys %}    
-                <a href="../search/{{ key }}" class="mb-2 tm-btn tm-btn-primary">{{ key }}</a>
+                <a href="../search/?type_search=0&query={{ key }}" class="mb-2 tm-btn tm-btn-primary">{{ key }}</a>
             {% endfor %}
         </div>
     </div>
 {% endblock %}
+
+?type_search=3&query=dasdsa
