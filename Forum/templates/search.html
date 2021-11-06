@@ -26,15 +26,15 @@
 {% block content %}
     <div class="row tm-row">
         <div class="col-12">
-            <form method="GET" class="form-inline tm-mb-20 tm-search-form">   
+            <form method="GET" class="form-inline tm-mb-20 tm-search-form tm-radio-search">   
                 <input type="radio" id="kwCheck" name="type_search" value="0" checked>
-                <label for="kwCheck" class='tm-mr-20'>KeyWord</label><br>
+                <label for="kwCheck" class='tm-mr-20 tm-ml-5'>KeyWord</label><br>
                 <input type="radio" id="titleCheck" name="type_search" value="1">
-                <label for="titleCheck" class='tm-mr-20'>Título</label><br>
+                <label for="titleCheck" class='tm-mr-20 tm-ml-5'>Título</label><br>
                 <input type="radio" id="AutorCheck" name="type_search" value="2">
-                <label for="AutorCheck" class='tm-mr-20'>Autor</label>
+                <label for="AutorCheck" class='tm-mr-20 tm-ml-5'>Autor</label>
                 <input type="radio" id="Content" name="type_search" value="3">
-                <label for="Content" class='tm-mr-20'>Conteúdo</label>
+                <label for="Content" class='tm-mr-20 tm-ml-5'>Conteúdo</label>
 
                 <input class="form-control tm-search-input" name="query" type="text" placeholder="Search..." aria-label="Search">
                 <button class="tm-search-button" type="submit">
