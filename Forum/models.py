@@ -14,3 +14,12 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+class System(models.Model):
+    system = models.CharField(max_length=255)
+
+    class Program(models.Model):
+        Program = models.CharField(max_length=255)
+        
+        class Detail(models.Model):
+            Detail = models.CharField(max_length=255)
